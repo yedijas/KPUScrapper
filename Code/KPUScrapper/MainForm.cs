@@ -30,6 +30,7 @@ namespace KPUScrapper
                     }
                     Helper.Downloader downloader = new Helper.Downloader();
                     downloader.Download(DirectoryTextBox.Text);
+                    MessageBox.Show("Selamat! Download berhasil! Silakan cek folder " + DirectoryTextBox.Text + " untuk melihat hasil!");
                 }
                 else
                 {
