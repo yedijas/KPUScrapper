@@ -51,33 +51,42 @@ namespace KPUScrapper.Helper
                                 }
                                 foreach (var TPS in DownloadTPS(kec.Value, kel.Value))
                                 {
-                                    // create tps dir
-                                    String tpsdir = desdir + @"\TPS-" + TPS.Key;
-                                    if (!Directory.Exists(tpsdir))
+                                    if (!String.IsNullOrEmpty(TPS.Value) || !String.IsNullOrWhiteSpace(TPS.Value))
                                     {
-                                        Directory.CreateDirectory(tpsdir);
-                                    }
-                                    WebClient downloadFileClient = new WebClient();
+                                        // create tps dir
+                                        String tpsdir = desdir + @"\TPS-" + TPS.Key;
+                                        if (!Directory.Exists(tpsdir))
+                                        {
+                                            Directory.CreateDirectory(tpsdir);
+                                        }
+                                        WebClient downloadFileClient = new WebClient();
 
-                                    bool downloaded = false;
-                                    while (!downloaded)
+                                        bool downloaded = false;
+                                        while (!downloaded)
+                                        {
+                                            try
+                                            {
+                                                downloadFileClient.DownloadFile(TPS.Value, tpsdir + @"\ScanC1-1.zip");
+                                                TulisLog(dir + @"\" + DIR, prov.Key, kab.Key, kec.Key, kel.Key, TPS.Key, true);
+                                                downloaded = true;
+                                            }
+                                            catch
+                                            {
+                                                downloaded = false;
+                                            }
+                                        }
+                                    }
+                                    else
                                     {
-                                        try
-                                        {
-                                            downloadFileClient.DownloadFile(TPS.Value, tpsdir + @"\ScanC1-1.zip");
-                                            TulisLog(dir + @"\" + DIR, prov.Key, kab.Key, kec.Key, kel.Key, TPS.Key, true);
-                                            downloaded = true;
-                                        }
-                                        catch
-                                        {
-                                            downloaded = false;
-                                        }
+                                        TulisLog(dir + @"\" + DIR, prov.Key, kab.Key, kec.Key, kel.Key, TPS.Key, false);
                                     }
                                 }
                             }
                         }
                     }
                 }
+
+                //DownloadTPS("148", "155");
             }
             catch (Exception)
             {
@@ -194,9 +203,16 @@ namespace KPUScrapper.Helper
             for (int i = 3; i < table.Count() - 1; i++)
             {
                 string IDTPS = table[i].Descendants("td").FirstOrDefault().InnerHtml.Trim();
-                string downloadLink = "http://pilpres2014.kpu.go.id" + table[i].Descendants("td").LastOrDefault().Descendants("a").FirstOrDefault().Attributes["href"].Value.Trim();
-
-                //Console.WriteLine("ID : " + IDTPS + " link : " + downloadLink);
+                string downloadLink = "";
+                try
+                {
+                    downloadLink = "http://pilpres2014.kpu.go.id" + table[i].Descendants("td").LastOrDefault().Descendants("a").FirstOrDefault().Attributes["href"].Value.Trim();
+                }
+                catch
+                {
+                    downloadLink = "";
+                }
+                Console.WriteLine("ID : " + IDTPS + " link : " + downloadLink);
 
                 daftar.Add(IDTPS, downloadLink);
             }
