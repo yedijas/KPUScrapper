@@ -1,0 +1,13 @@
+C:\projects\KPUScrapper\KPUScrapper\bin\Debug\KPUScrapper.exe.config
+C:\projects\KPUScrapper\KPUScrapper\bin\Debug\KPUScrapper.exe
+C:\projects\KPUScrapper\KPUScrapper\bin\Debug\KPUScrapper.pdb
+C:\projects\KPUScrapper\KPUScrapper\bin\Debug\HtmlAgilityPack.dll
+C:\projects\KPUScrapper\KPUScrapper\bin\Debug\HtmlAgilityPack.pdb
+C:\projects\KPUScrapper\KPUScrapper\bin\Debug\HtmlAgilityPack.xml
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.csprojResolveAssemblyReference.cache
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.Properties.Resources.resources
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.csproj.GenerateResource.Cache
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.exe
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.pdb
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.MainForm.resources
+C:\projects\KPUScrapper\KPUScrapper\obj\Debug\KPUScrapper.About.resources
